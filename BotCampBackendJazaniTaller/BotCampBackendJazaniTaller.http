@@ -1,0 +1,6 @@
+@BotCampBackendJazaniTaller_HostAddress = http://localhost:5222
+
+GET {{BotCampBackendJazaniTaller_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
