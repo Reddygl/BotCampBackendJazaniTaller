@@ -24,6 +24,7 @@ namespace Jazani.Application.Admins.Services.Implementations
         public async Task<MineralGroupDto> CreateAsync(MineralGroupSaveDto mineralGroupSaveDto)
         {
             MineralGroup mineralGroup = _mapper.Map<MineralGroup>(mineralGroupSaveDto);
+            mineralGroup.RegistrationDate = DateTime.Now;
             mineralGroup.State = true;
             MineralGroup mineralGroupSaved = await _mineralGroupRepository.SaveAsync(mineralGroup);
             return _mapper.Map<MineralGroupDto>(mineralGroupSaved);

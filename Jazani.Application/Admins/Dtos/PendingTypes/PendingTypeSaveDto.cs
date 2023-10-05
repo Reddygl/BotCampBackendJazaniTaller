@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using Jazani.Domain.Admins.Models;
+﻿using Jazani.Domain.Admins.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,11 +8,8 @@ using System.Threading.Tasks;
 
 namespace Jazani.Application.Admins.Dtos.PendingTypes
 {
-    public class PendingTypeSaveDto : Profile
+    public class PendingTypeSaveDto
     {
-        public PendingTypeSaveDto()
-        {
-            CreateMap<PendingType, PendingTypeSaveDto>().ReverseMap();
-        }
+        public string Name { get; set; } = default!;
     }
 }

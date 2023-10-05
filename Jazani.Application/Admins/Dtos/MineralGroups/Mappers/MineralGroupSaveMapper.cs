@@ -8,11 +8,10 @@ using System.Threading.Tasks;
 
 namespace Jazani.Application.Admins.Dtos.MineralGroups.Mappers
 {
-    public class MineralGroupMapper : Profile
+    public class MineralGroupSaveMapper : Profile
     {
-        public MineralGroupMapper()
-        {
-            CreateMap<MineralGroup, MineralGroupDto>();
-        }  
+        public MineralGroupSaveMapper() { 
+            CreateMap<MineralGroup,MineralGroupSaveDto>().ReverseMap();
+        }
     }
 }
