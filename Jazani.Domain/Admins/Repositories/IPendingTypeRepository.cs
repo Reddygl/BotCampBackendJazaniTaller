@@ -1,16 +1,9 @@
 ﻿using Jazani.Domain.Admins.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Jazani.Domain.Cores.Repositories;
 
 namespace Jazani.Domain.Admins.Repositories
 {
-    public interface IPendingTypeRepository
+    public interface IPendingTypeRepository : ICrudRepository<PendingType, int>
     {
-        Task<IReadOnlyList<PendingType>> FindAllAsync();
-        Task<PendingType> FindByIdAsync(int id);
-        Task<PendingType> SaveAsync(PendingType pendingType);
     }
 }

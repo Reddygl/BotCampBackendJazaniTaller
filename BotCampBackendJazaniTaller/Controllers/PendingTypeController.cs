@@ -1,6 +1,5 @@
 ﻿using Jazani.Application.Admins.Dtos.PendingTypes;
 using Jazani.Application.Admins.Services;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BotCampBackendJazaniTaller.Controllers

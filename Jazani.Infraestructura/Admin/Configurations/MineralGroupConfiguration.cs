@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Jazani.Domain.Admins.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Jazani.Domain.Admins.Models;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Jazani.Infraestructura.Admin.Configurations

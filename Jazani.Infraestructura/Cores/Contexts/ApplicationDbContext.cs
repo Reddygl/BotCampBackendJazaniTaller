@@ -1,11 +1,6 @@
 ﻿using Jazani.Domain.Admins.Models;
-using Jazani.Infraestructura.Admin.Configurations;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Reflection;
 
 namespace Jazani.Infraestructura.Cores.Contexts
 {
@@ -15,16 +10,11 @@ namespace Jazani.Infraestructura.Cores.Contexts
         {
 
         }
-        #region "DbSet"
-        public DbSet<PendingType> PendingTypes { get; set; }
-        public DbSet<MineralGroup> MineralGroups { get; set; }
-        #endregion
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            modelBuilder.ApplyConfiguration(new PendingTypeConfiguration());
-            modelBuilder.ApplyConfiguration(new MineralGroupConfiguration());
+            modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
         }
     }
 }

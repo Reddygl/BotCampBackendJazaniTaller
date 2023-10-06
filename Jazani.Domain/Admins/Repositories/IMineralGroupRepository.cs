@@ -1,16 +1,9 @@
 ﻿using Jazani.Domain.Admins.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Jazani.Domain.Cores.Repositories;
 
 namespace Jazani.Domain.Admins.Repositories
 {
-    public interface IMineralGroupRepository
+    public interface IMineralGroupRepository : ICrudRepository<MineralGroup, int>
     {
-        Task<IReadOnlyList<MineralGroup>> FindAllAsync();
-        Task<MineralGroup> FindByIdAsync(int id);
-        Task<MineralGroup> SaveAsync(MineralGroup mineralGroup);
     }
 }
