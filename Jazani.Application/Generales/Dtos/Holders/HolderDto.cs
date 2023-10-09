@@ -1,6 +1,13 @@
-﻿namespace Jazani.Domain.Generales.Moldels
+﻿using Jazani.Domain.Generales.Moldels;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Jazani.Application.Generales.Dtos.Holders
 {
-    public class Holder
+    public class HolderDto
     {
         public int Id { get; set; }
         public string Name { get; set; } = default!;
@@ -14,7 +21,5 @@
         public int IdentificationDocumentId { get; set; }
         public int HolderTypeId { get; set; }
         public bool State { get; set; }
-        public virtual ICollection<MiningConcessionHolder> MiningConcessionHolders { get; set; }
-        public virtual ICollection<Investment> Investments { get; set; }
     }
 }

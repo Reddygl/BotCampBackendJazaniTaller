@@ -1,11 +1,12 @@
-﻿using Jazani.Application.Admins.Dtos.MineralGroups;
+﻿using BotCampBackendJazaniTaller.Exceptions;
+using Jazani.Application.Admins.Dtos.MineralGroups;
 using Jazani.Application.Admins.Services;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BotCampBackendJazaniTaller.Controllers
 {
     [Route("api/[controller]")]
-    [ApiController]
     public class MineralGroupController : ControllerBase
     {
         private readonly IMineralGroupService _mineralGroupService;
@@ -19,24 +20,36 @@ namespace BotCampBackendJazaniTaller.Controllers
             return await _mineralGroupService.FindAllAsync();
         }
         [HttpGet("{id}")]
-        public async Task<MineralGroupDto> Get(int id)
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(MineralGroupDto))]
+        [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(ErrorModel))]
+        public async Task<Results<NotFound, Ok<MineralGroupDto>>> Get(int id)
         {
-            return await _mineralGroupService.FindByIdAsync(id);
+            var response = await _mineralGroupService.FindByIdAsync(id);
+            return TypedResults.Ok(response);
         }
         [HttpPost]
-        public async Task<MineralGroupDto> Post([FromBody] MineralGroupSaveDto mineralGroupSaveDto)
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(MineralGroupDto))]
+        [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(ErrorModel))]
+        public async Task<Results<BadRequest, CreatedAtRoute<MineralGroupDto>>> Post([FromBody] MineralGroupSaveDto mineralGroupSaveDto)
         {
-            return await _mineralGroupService.CreateAsync(mineralGroupSaveDto);
+            var response = await _mineralGroupService.CreateAsync(mineralGroupSaveDto);
+            return TypedResults.CreatedAtRoute(response);
         }
-        [HttpPut]
-        public async Task<MineralGroupDto> Put(int id, [FromBody] MineralGroupSaveDto mineralGroupSaveDto)
+        [HttpPut("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(MineralGroupDto))]
+        [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(ErrorModel))]
+        public async Task<Results<NotFound, Ok<MineralGroupDto>>> Put(int id, [FromBody] MineralGroupSaveDto mineralGroupSaveDto)
         {
-            return await _mineralGroupService.EditAsync(id, mineralGroupSaveDto);
+            var response = await _mineralGroupService.EditAsync(id, mineralGroupSaveDto);
+            return TypedResults.Ok(response);
         }
-        [HttpDelete]
-        public async Task<MineralGroupDto> Delete(int id)
+        [HttpDelete("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(MineralGroupDto))]
+        [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(ErrorModel))]
+        public async Task<Results<NotFound, Ok<MineralGroupDto>>> Delete(int id)
         {
-            return await _mineralGroupService.DisabledAsync(id);
+            var response = await _mineralGroupService.DisabledAsync(id);
+            return TypedResults.Ok(response);
         }
     }
 }

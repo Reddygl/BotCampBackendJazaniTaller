@@ -16,6 +16,7 @@
         public string? Observation { get; set; }
         public DateTime RegistrationDate { get; set; }
         public bool State { get; set; }
+        public virtual ICollection<Investment> Investments { get; set; }
         public virtual ICollection<MiningConcessionHolder> MiningConcessionHolders { get; set; }
     }
 }

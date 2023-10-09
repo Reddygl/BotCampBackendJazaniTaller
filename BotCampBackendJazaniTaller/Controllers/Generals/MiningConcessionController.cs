@@ -1,11 +1,12 @@
-﻿using Jazani.Application.Generales.Dtos.MiningConcessions;
+﻿using BotCampBackendJazaniTaller.Exceptions;
+using Jazani.Application.Generales.Dtos.MiningConcessions;
 using Jazani.Application.Generales.Services;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BotCampBackendJazaniTaller.Controllers.Generals
 {
     [Route("api/[controller]")]
-    [ApiController]
     public class MiningConcessionController : ControllerBase
     {
         private readonly IMiningConcessionService _miningConcessionService;
@@ -20,24 +21,36 @@ namespace BotCampBackendJazaniTaller.Controllers.Generals
             return await _miningConcessionService.FindAllAsync();
         }
         [HttpGet("{id}")]
-        public async Task<MiningConcessionDto> Get(int id)
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(MiningConcessionDto))]
+        [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(ErrorModel))]
+        public async Task<Results<NotFound, Ok<MiningConcessionDto>>> Get(int id)
         {
-            return await _miningConcessionService.FindByIdAsync(id);
+            var response = await _miningConcessionService.FindByIdAsync(id);
+            return TypedResults.Ok(response);
         }
         [HttpPost]
-        public async Task<MiningConcessionDto> Post([FromBody] MiningConcessionSaveDto miningConcessionSaveDto)
+        [ProducesResponseType(StatusCodes.Status201Created, Type = typeof(MiningConcessionDto))]
+        [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(ErrorResponse))]
+        public async Task<Results<BadRequest, CreatedAtRoute<MiningConcessionDto>>> Post([FromBody] MiningConcessionSaveDto miningConcessionSaveDto)
         {
-            return await _miningConcessionService.CreateAsync(miningConcessionSaveDto);
+            var response = await _miningConcessionService.CreateAsync(miningConcessionSaveDto);
+            return TypedResults.CreatedAtRoute(response);
         }
-        [HttpPut]
-        public async Task<MiningConcessionDto> Put(int id, [FromBody] MiningConcessionSaveDto miningConcessionSaveDto)
+        [HttpPut("{id}")]
+        [ProducesResponseType(StatusCodes.Status201Created, Type = typeof(MiningConcessionDto))]
+        [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(ErrorResponse))]
+        public async Task<Results<NotFound, Ok<MiningConcessionDto>>> Put(int id, [FromBody] MiningConcessionSaveDto miningConcessionSaveDto)
         {
-            return await _miningConcessionService.EditAsync(id, miningConcessionSaveDto);
+            var response = await _miningConcessionService.EditAsync(id, miningConcessionSaveDto);
+            return TypedResults.Ok(response);
         }
-        [HttpDelete]
-        public async Task<MiningConcessionDto> Delete(int id)
+        [HttpDelete("{id}")]
+        [ProducesResponseType(StatusCodes.Status201Created, Type = typeof(MiningConcessionDto))]
+        [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(ErrorResponse))]
+        public async Task<Results<NotFound, Ok<MiningConcessionDto>>> Delete(int id)
         {
-            return await _miningConcessionService.DisabledAsync(id);
+            var response = await _miningConcessionService.DisabledAsync(id);
+            return TypedResults.Ok(response);
         }
     }
 }
