@@ -3,7 +3,7 @@ using Jazani.Domain.Generales.Moldels;
 
 namespace Jazani.Domain.Generales.Repositories
 {
-    public interface IInvestmentRepository : ICrudRepository<Investment, int>
+    public interface IInvestmentRepository : ICrudRepository<Investment, int>, IPaginatedRepository<Investment>
     {
     }
 }

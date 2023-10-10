@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Jazani.Application.Cores.Exceptions;
 using Jazani.Application.Generales.Dtos.Investments;
+using Jazani.Core.Paginations;
 using Jazani.Domain.Generales.Moldels;
 using Jazani.Domain.Generales.Repositories;
 using Microsoft.Extensions.Logging;
@@ -69,6 +70,13 @@ namespace Jazani.Application.Generales.Services.Implementations
         private NotFoundCoreException InvestmentNotFound(int id)
         {
             return new NotFoundCoreException("Investment no encontrado para el id: " + id);
+        }
+        public async Task<ResponsePagination<InvestmentDto>> PaginatedSearch(RequestPagination<InvestmentFilterDto> request)
+        {
+            var entity = _mapper.Map<RequestPagination<Investment>>(request);
+            var response = await _investmentRepository.PaginatedSearch(entity);
+
+            return _mapper.Map<ResponsePagination<InvestmentDto>>(response);
         }
     }
 }

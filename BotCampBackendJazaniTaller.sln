@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34031.279
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BotCampBackendJazaniTaller", "BotCampBackendJazaniTaller\BotCampBackendJazaniTaller.csproj", "{D39A6CDE-D34B-4FD8-A978-D25CAE4657FA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BotCampBackendJazaniTaller", "BotCampBackendJazaniTaller\BotCampBackendJazaniTaller.csproj", "{D39A6CDE-D34B-4FD8-A978-D25CAE4657FA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jazani.Application", "Jazani.Application\Jazani.Application.csproj", "{F4C6FEAA-A8C7-440A-99C2-417E6A2695F3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jazani.Application", "Jazani.Application\Jazani.Application.csproj", "{F4C6FEAA-A8C7-440A-99C2-417E6A2695F3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jazani.Domain", "Jazani.Domain\Jazani.Domain.csproj", "{D27995B7-F5A7-42E5-8994-D95FEE8D6141}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jazani.Domain", "Jazani.Domain\Jazani.Domain.csproj", "{D27995B7-F5A7-42E5-8994-D95FEE8D6141}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jazani.Infraestructura", "Jazani.Infraestructura\Jazani.Infraestructura.csproj", "{E787A917-6FE6-470F-B3AA-883973FBA290}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jazani.Infraestructura", "Jazani.Infraestructura\Jazani.Infraestructura.csproj", "{E787A917-6FE6-470F-B3AA-883973FBA290}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jazani.Core", "Jazani.Core\Jazani.Core.csproj", "{E836EAFC-D0E2-41ED-AB52-CBFCDC19FBA5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{E787A917-6FE6-470F-B3AA-883973FBA290}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E787A917-6FE6-470F-B3AA-883973FBA290}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E787A917-6FE6-470F-B3AA-883973FBA290}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E836EAFC-D0E2-41ED-AB52-CBFCDC19FBA5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E836EAFC-D0E2-41ED-AB52-CBFCDC19FBA5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E836EAFC-D0E2-41ED-AB52-CBFCDC19FBA5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E836EAFC-D0E2-41ED-AB52-CBFCDC19FBA5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,6 +1,7 @@
 ﻿using BotCampBackendJazaniTaller.Exceptions;
 using Jazani.Application.Generales.Dtos.Investments;
 using Jazani.Application.Generales.Services;
+using Jazani.Core.Paginations;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 
@@ -51,6 +52,11 @@ namespace BotCampBackendJazaniTaller.Controllers.Generals
         {
             var response = await _investmentService.DisabledAsync(id);
             return TypedResults.Ok(response);
+        }
+        [HttpGet("PaginatedSearch")]
+        public async Task<ResponsePagination<InvestmentDto>> PaginatedSearch([FromQuery] RequestPagination<InvestmentFilterDto> request)
+        {
+            return await _investmentService.PaginatedSearch(request);
         }
     }
 }

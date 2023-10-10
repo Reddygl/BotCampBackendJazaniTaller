@@ -1,8 +1,9 @@
-﻿using Jazani.Application.Generales.Dtos.Investments;
+﻿using Jazani.Application.Cores.Services;
+using Jazani.Application.Generales.Dtos.Investments;
 
 namespace Jazani.Application.Generales.Services
 {
-    public interface IInvestmentService
+    public interface IInvestmentService:IPaginatedService<InvestmentDto, InvestmentFilterDto>
     {
         Task<IReadOnlyList<InvestmentDto>> FindAllAsync();
         Task<InvestmentDto> FindByIdAsync(int id);

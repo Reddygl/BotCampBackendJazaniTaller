@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Jazani.Domain.Cores.Paginations;
+using Jazani.Infraestructura.Cores.Paginations;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -12,7 +14,7 @@ namespace Jazani.Infraestructura.Cores.Contexts
             {
                 options.UseSqlServer(configuration.GetConnectionString("DbConnection"));
             });
-
+            services.AddTransient(typeof(IPaginator<>), typeof(Paginator<>));
             return services;
 
         }
