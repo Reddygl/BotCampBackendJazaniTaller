@@ -44,7 +44,14 @@ namespace Jazani.Infraestructura.Generales.Persistences
         {
             var filter = request.Filter;
 
-            var query = _dbContext.Set<Investment>().AsQueryable();
+            var query = _dbContext.Set<Investment>()
+                .Include(t => t.Holder)
+                        .Include(t => t.MiningConcession)
+                        .Include(t => t.MeasureUnit)
+                        .Include(t => t.Periodtype)
+                        .Include(t => t.InvestmentConcept)
+                        .Include(t => t.InvestmentType)
+                .AsQueryable();
 
             if (filter is not null)
             {
