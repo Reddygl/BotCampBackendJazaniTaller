@@ -9,6 +9,9 @@ namespace Jazani.Application.Generales.Dtos.MiningConcessions.Profiles
             CreateMap<MiningConcession, MiningConcessionDto>();
             CreateMap<MiningConcession, MiningConcessionSimpleDto>();
             CreateMap<MiningConcession, MiningConcessionSaveDto>().ReverseMap();
+            //add
+            CreateMap<MiningConcession, MiningConcessionSaveDto>();
+            CreateMap<MiningConcession, MiningConcessionSimpleDto>().ReverseMap();
         }
     }
 }
